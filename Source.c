@@ -62,23 +62,11 @@ void CALLBACK display(void)
 	//glTranslatef(x, y, 0.0);
 	glRotatef(alfa, 0, 1, 0);
 
-	glColor3d(1.0, 1.0, 0);
 	qobj = gluNewQuadric();
-
-	//un hexagon, pct pe circumsferinta unui cerc
-	/*glPushMatrix();
-	gluQuadricDrawStyle(qobj, GLU_SILHOUETTE);
-	gluCylinder(qobj, 50, 50, 1, 6, 1);
-	glPopMatrix();
-
-	glPushMatrix();
-	gluQuadricDrawStyle(qobj, GLU_SILHOUETTE);
-	gluCylinder(qobj, 50, 50, 1, 30, 1);
-	glPopMatrix();*/
 
 	//corp total masina
 	glPushMatrix();
-	
+		glColor3d(1.0, 1.0, 0);
 	//partea 1/2 a masinii
 		glPushMatrix();
 			auxWireBox(25, 15, 20);
@@ -151,7 +139,12 @@ void CALLBACK display(void)
 			glPopMatrix();
 		glPopMatrix();
 
+		glPushMatrix();
+
+		glPopMatrix();
+
 	glPopMatrix();
+
 
 	auxSwapBuffers();
 }
