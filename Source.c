@@ -68,9 +68,9 @@ void CALLBACK rot_tire_left(void)
 
 void CALLBACK display(void)
 {
-	glClear(GL_COLOR_BUFFER_BIT);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	qobj = gluNewQuadric();
-	
+	glEnable(GL_DEPTH_TEST);
 
 	glPointSize(5);
 	glBegin(GL_POINTS);
@@ -104,7 +104,7 @@ void CALLBACK display(void)
 			glRotatef(tire, 0, 1, 0);
 			glPushMatrix();
 				gluQuadricDrawStyle(qobj, GLU_FILL);
-				gluCylinder(qobj, 5, 5, 3, 20, 1);
+				gluCylinder(qobj, 5, 5, 3, 20, 10);
 			glPopMatrix();
 
 			glPushMatrix();
@@ -123,12 +123,13 @@ void CALLBACK display(void)
 			glPopMatrix();
 
 			glPushMatrix();
+				glTranslatef(0, 0, 1.5);
 				gluQuadricDrawStyle(qobj, GLU_FILL);	
 				gluDisk(qobj, 2.5, 5, 20, 10);
 			glPopMatrix();
 		glPopMatrix();
 
-	//roata spate stanga
+	//roata spate dreapta
 		glPushMatrix();
 			glTranslatef(40, -5, -12);
 			glPushMatrix();
@@ -142,7 +143,7 @@ void CALLBACK display(void)
 			glPopMatrix();
 		glPopMatrix();
 
-	//roata spate dreapta 
+	//roata spate stanga
 		glPushMatrix();
 			glTranslatef(40, -5, 9);
 			glPushMatrix();
@@ -151,6 +152,7 @@ void CALLBACK display(void)
 			glPopMatrix();
 
 			glPushMatrix();
+				glTranslatef(0, 0, 1.5);
 				gluQuadricDrawStyle(qobj, GLU_FILL);
 				gluDisk(qobj, 2.5, 5, 20, 10);
 			glPopMatrix();
@@ -165,13 +167,22 @@ void CALLBACK display(void)
 		glPopMatrix();
 
 		//geam lateral stanga
-		/*glPushMatrix();
-		glTranslatef(0, 0, -1.5);
-		glRotatef(tire, 0, 1, 0);
-		glTranslatef(30, 30, 0);
+		glPushMatrix();
+			glTranslatef(22, 17, 11);
+			glRotatef(90, 0, 1, 0);
+			glRotatef(90, 1, 0, 0);
 			gluQuadricDrawStyle(qobj, GLU_FILL);
-			gluCylinder(qobj, 5, 5, 3, 20, 1);
-		glPopMatrix();*/
+			gluCylinder(qobj, 6.5, 6.5, 9, 2, 10);
+		glPopMatrix();
+
+		//geam lateral dreapta
+		glPushMatrix();
+			glTranslatef(22, 17, -12);
+			glRotatef(90, 0, 1, 0);
+			glRotatef(90, 1, 0, 0);
+			gluQuadricDrawStyle(qobj, GLU_FILL);
+			gluCylinder(qobj, 6.5, 6.5, 9, 2, 10);
+		glPopMatrix();
 
 	glPopMatrix();
 
